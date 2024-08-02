@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_23_080335) do
+ActiveRecord::Schema.define(version: 2024_08_02_125126) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -40,11 +40,24 @@ ActiveRecord::Schema.define(version: 2021_08_23_080335) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "colors", force: :cascade do |t|
+    t.integer "red"
+    t.integer "green"
+    t.integer "blue"
+    t.float "score"
+    t.float "pixel_fraction"
+    t.integer "list_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["list_id"], name: "index_colors_on_list_id"
+  end
+
   create_table "lists", force: :cascade do |t|
     t.string "title"
     t.string "body"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "score", precision: 5, scale: 3
   end
 
   create_table "tags", force: :cascade do |t|
@@ -56,4 +69,5 @@ ActiveRecord::Schema.define(version: 2021_08_23_080335) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "colors", "lists"
 end

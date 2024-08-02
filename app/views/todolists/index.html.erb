@@ -6,6 +6,8 @@
     <% end %>
     <div class="list-comment">
       <span class="list-body"><%= list.body %></span>
+      <!--本文の点数を表示するby language追加-->
+      <span class="sentiment-score">本文の感情分析スコア<%= list.score %></span>
       <span class="list-title"><%=link_to list.title, todolist_path(list.id) %></span>
     </div>
   </div>

@@ -2,6 +2,8 @@
 <p><%= @list.title %></p>
 <h2>本文</h2>
 <p><%= @list.body %></p>
+<!--language導入、以下増枠-->
+<p class="sentiment-score">本文の感情分析スコア[<%= @list.score %>]</p>
 <h2>画像</h2>
 <% if @list.image.attached? %>
   <%= image_tag @list.image.variant(resize:'300x300') %>
