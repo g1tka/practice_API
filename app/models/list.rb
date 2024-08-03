@@ -3,4 +3,5 @@ class List < ApplicationRecord
   has_many :colors, dependent: :destroy
   has_one_attached :image
   
+  
 end

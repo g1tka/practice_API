@@ -12,6 +12,18 @@
 <% @list.tags.each do |tag| %>
   <span class="label"><%= tag.name %></span>
 <% end %>
+<div>【解析した画像】</div>
+ <% if @list.image %>
+   <%= image_tag @list.image %> 
+ <% end %>
+
+<>【画像解析結果のcolor情報】</h5> 
+ <% @list.colors.each do |color| %>
+   <%= color.red %>
+   <%= color.green %>
+   <%= color.blue %>
+   <%= color.score %>
+ <% end %>
 </div>
 <%= link_to "削除", destroy_todolist_path(@list.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
 <%= link_to "編集", edit_todolist_path(@list.id) %>
